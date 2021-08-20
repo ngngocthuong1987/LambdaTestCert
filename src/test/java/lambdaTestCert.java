@@ -47,16 +47,16 @@ public class lambdaTestCert {
         capabilities.setCapability("video", true); // To enable video recording
         capabilities.setCapability("console", true); // To capture console logs
     
-//        try {
-//			driver = new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), capabilities);
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+        try {
+			driver = new RemoteWebDriver(new URL("https://"+username+":"+accessKey+"@hub.lambdatest.com/wd/hub"), capabilities);
+//            WebDriverManager.chromedriver().setup();
+//            driver = new ChromeDriver();
 			driver.manage().timeouts().implicitlyWait(implicitWaitTimeout, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
             js = driver;
-//        } catch (MalformedURLException e) {
-//            System.out.println("Invalid grid URL");
-//        }
+        } catch (MalformedURLException e) {
+            System.out.println("Invalid grid URL");
+        }
     }
 
 	@Test()
@@ -92,7 +92,8 @@ public class lambdaTestCert {
             // 8. Click the ‘LEARN MORE’ link for Testing Whiz. The page should open in the same window.
             driver.findElement(learMoreTestingWhizLink).click();
 
-
+            // 9. Check if the title of the page is ‘TestingWhiz Integration | LambdaTest’. If not, raise an Assert
+            Assert.assertEquals(driver.getTitle(), "TestingWhiz Integration | LambdaTest");
 
             driver.quit();
         } catch (Exception e) {
