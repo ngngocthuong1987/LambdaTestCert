@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lambda Test" parallel="classes" thread-count="1">
+    <listeners>
+    </listeners>
+    <test name="Lambda Test Cert">
+        <classes>
+            <class name="lambdaTestCert"/>
+        </classes>
+    </test>
+</suite>
